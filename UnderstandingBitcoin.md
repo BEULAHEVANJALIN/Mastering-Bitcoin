@@ -61,3 +61,29 @@ Read about: Finney Attack, Race Attack and 51% Attack.
 ## Privacy in Bitcoin Transactions
 Once transactions are verified, they are recorded on a public ledger, which allows you to view details such as sender's and receiver's addresses, the amount transferred, and timestamps. These addresses are usually pseudonymous (some alphanumeric strings) and do not directly reveal personal identities, although they can sometimes be linked to people through other means. To improve privacy, it is recommended not to reuse addresses. Creating a new address for each transaction makes it very difficult to link multiple transactions to the same user. Unlike bank account numbers, knowing a Bitcoin address does not allow anyone to withdraw money from your wallet; You have to start all expenses. However, by sharing the same address with multiple people, you can see how many bitcoins others have sent to that address. Therefore, creating a new invoice with a new address every time you request payment is important to maintain privacy.
 
+## Inflation in Bitcoin
+Bitcoin's inflation mechanism is basically different from fiat currencies due to its fixed supply and scheduled halving events. Unlike fiat currencies like the rupee or dollar, which can expand the money supply based on political and economic decisions, Bitcoin has a total supply of 21 million coins, ensuring scarcity. New bitcoins are introduced into circulation through mining, where miners are rewarded for adding new blocks to the blockchain. This reward is halved every four years, reducing the number of new bitcoins. With the 2024 halving, the block reward collected by miners is now 3.125 bitcoins, set to decrease to 1.5625 bitcoins in the next halving event.
+
+The impact of these halving events is significant because they guarantee a predictable and steadily falling inflation rate. Bitcoin's issuance rate is highly predictable and the total supply is expected to peak in the year 2140. Currently, Bitcoin's inflation rate is about 0.9% annually and will reduce every four years until it reaches zero. This is in stark contrast to fiat currencies, whose inflation rates fluctuate widely.
+
+## The Advantage of Irreversible Transactions in Bitcoin
+There is an ongoing debate about the irreversibility of Bitcoin transactions, with some critics arguing that this feature is a major drawback. However, this view misunderstands the fundamental principles and benefits of Bitcoin technology. In fact, the irreversibility of transactions is one of Bitcoin's greatest strengths. 
+
+Here's why:
+
+Bitcoin does not depend on banks or intermediaries to approve transactions. Instead, it uses a decentralized system, meaning that no one person or organization controls it. This system ensures that once a transaction is made it cannot be changed, providing great security and confidence.
+
+This feature comes with both pros and cons.
+#### Pros:
+  It would increase protection against fraud and errors, similar to traditional financial systems where erroneous or fraudulent transactions can be reversed, providing a sense of security.
+  
+#### Cons:
+  Losing Decentralization: Bitcoin is decentralized, meaning no single person or group controls it. Making transactions reversible would need a central authority to manage reversals, which goes against Bitcoin’s principles.
+
+  Complicated System: Adding the ability to reverse transactions would make Bitcoin more complicated and harder to manage.
+
+  Possible Misuse: People might falsely claim mistakes or fraud to reverse transactions and get their money back unfairly.
+
+  Trust Issues: Bitcoin is trusted because once a transaction is done, it can’t be changed. This gives users confidence that their transactions are final and secure. Reversing transactions could weaken this trust.
+
+While the idea of ​​reversible transactions may seem attractive for greater security, it fundamentally changes what makes Bitcoin unique. Bitcoin's strengths lie in its decentralization, security and belief that once a transaction is made, it is final!. Bitcoin already provides ways to protect users from reverse transactions (Multisignature and escrow services). These mechanisms allow buyers and sellers to set conditions for the release of funds, provide ways to resolve disputes, and ensure that both parties meet their obligations. 
