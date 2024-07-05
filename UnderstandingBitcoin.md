@@ -28,7 +28,7 @@ The Bitcoin network is a decentralized peer-to-peer system that enables direct t
   The Bitcoin network is designed to be Byzantine fault tolerant, meaning it can reach consensus even if some participants act maliciously. This is achieved through a consensus mechanisms like Proof of Work (PoW), and economic incentives.
 - #### Proof of Work (PoW)
   Proof of work is a consensus mechanism where miners verify transactions by solving a complex mathematical problems and add them to the blockchain. This process requires significant computational effort and energy. In return for their efforts, miners receive bitcoins (economic incentive) as rewards for validating transactions.
-- #### Nash equilibrium
+- #### [Nash equilibrium](https://en.wikipedia.org/wiki/Nash_equilibrium#:~:text=A%20Nash%20equilibrium%20is%20a,Nash%20equilibrium)
   In the context of the Bitcoin network, a Nash equilibrium is one in which no participant can benefit by changing their strategy while others keep their strategy unchanged. The best strategy for each participant is to follow the rules of the network, ensuring cooperation and stability.
 
 ## Why Bitcoin Doesn't Have a Hierarchical Network
