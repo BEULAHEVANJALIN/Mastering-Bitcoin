@@ -1,0 +1,124 @@
+\documentclass[11pt, letterpaper]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Mathematics in Bitcoin}
+\author{Beulah Evanjalin}
+\date{July 2024}
+
+\begin{document}
+
+\maketitle
+
+Bitcoin relies heavily on mathematics to operate securely and efficiently. At its core, Bitcoin is a complex system with various mathematical principles to ensure the integrity and security of transactions. Understanding these principles is critical for anyone who wants to effectively contribute to the Bitcoin ecosystem.
+
+Cryptography is fundamental to Bitcoin’s existence. This ensures that transactions are secure and that the blockchain remains tamper-proof. Probability and statistics are essential for understanding the randomness and predictability of Bitcoin mining. Algorithms and data structures are the backbone for efficient transaction processing and block formation. Graph theory helps us understand the network of nodes that verify and propagate transactions across the Bitcoin network. Additionally, Boolean algebra, linear algebra, and calculus contribute to the development and improvement of various Bitcoin functions.
+
+\section{Divisors and Factors}
+
+\subsection{Divisor}
+An integer \( n \) is a divisor of another integer \( i \) if \( i \) can be written as \( i = qn \) for some integer \( q \). This means that when you divide \( i \) by \( n \), you get another integer \( q \) with no remainder.
+
+\textbf{Example:} 3 is a divisor of 12 because \( 12 = 4 \times 3 \).
+
+\subsection{Trivial Divisors}
+For any integer \( i \), the divisors \( 1 \) and \( i \) itself are called trivial divisors. These are the simplest divisors that any non-zero integer has.
+
+\textbf{Example:} The number 12 has 1 and 12 as its trivial divisors.
+
+\subsection{Factors}
+A factor of an integer \( i \) is a positive integer that is a nontrivial divisor of \( i \). This means a factor is a positive divisor of \( i \) other than 1 or \( i \) itself.
+
+\textbf{Example:} 2 and 6 are factors of 12, but 1 and 12 are not considered factors in this context because they are trivial divisors.
+
+\subsection{Prime Integer}
+A prime integer is a positive integer greater than 1 that has no nontrivial divisors other than itself. In other words, a prime number has exactly two distinct positive divisors: 1 and itself.
+
+\textbf{Example:} 5 is a prime number because its only positive divisors are 1 and 5.
+
+\section{Modular Arithmetic}
+
+Given a positive integer \( n \), any integer \( i \) can be uniquely expressed as \( i = qn + r \) where \( r \) (the remainder) is in the range \( 0 \leq r \leq n - 1 \), and \( q \) (the quotient) is an integer. This is based on the Euclidean division algorithm, which repeatedly subtracts \( n \) from \( i \) until the remainder is within the desired range.
+
+The remainder \( r \) is denoted as \( i \mod n \). The set of possible remainders when dividing by \( n \) is \( R_n = \{0, 1, \ldots, n - 1\} \). An integer \( i \) is divisible by \( n \) if and only if \( i \mod n = 0 \).
+
+Remainder arithmetic using the mod \( n \) remainder set \( R_n \) is called \textbf{mod-\( n \) arithmetic}. The rules for mod \( n \) arithmetic follow from the rules for integer arithmetic as follows.
+
+Let \( r = i \mod n \) and \( s = j \mod n \) then, as integers, \( r = i - qn \) and \( s = j - tn \) for some quotients \( q \) and \( t \). Then
+
+\[
+r + s = i + j - (q + t)n
+\]
+
+\[
+rs = ij - (qj + ti)n + qtn
+\]
+
+Hence \( (r + s) \mod n = (i + j) \mod n \) and \( rs \mod n = ij \mod n \)
+
+i.e., the mod \( n \) remainder of the sum or product of two integers is equal to the mod \( n \) remainder of the sum or product of their mod \( n \) remainders, as integers.
+
+The mod \( n \) addition and multiplication rules are therefore defined as follows:
+
+\[
+r \oplus s = (r + s) \mod n
+\]
+
+\[
+r \otimes s = (rs) \mod n
+\]
+
+where \( r \) and \( s \) denote elements of the remainder set \( R_n \) on the left and the corresponding ordinary integers on the right.
+
+\section{Groups}
+
+A group is a set of elements \( G = \{a, b, c, \ldots\} \) and an operation \( \oplus \) that satisfies the following axioms:
+
+\begin{enumerate}
+    \item \textbf{Closure}: For any \( a \in G \) and \( b \in G \), the element \( a \oplus b \) is in \( G \).
+    \item \textbf{Associative Law}: For any \( a, b, c \in G \), \( (a \oplus b) \oplus c = a \oplus (b \oplus c) \).
+    \item \textbf{Identity}: There is an identity element 0 in \( G \) such that \( a \oplus 0 = 0 \oplus a = a \) for all \( a \in G \).
+    \item \textbf{Inverse}: For each \( a \in G \), there is an inverse \(-a\) such that \( a \oplus (-a) = 0 \).
+\end{enumerate}
+
+In general, it is not necessary that \( a \oplus b = b \oplus a \). A group \( G \) for which \( a \oplus b = b \oplus a \) for all \( a, b \in G \) is called \textbf{abelian} or \textbf{commutative}.
+
+\section{Finite Cyclic Groups}
+
+A finite cyclic group is a finite group \( G \) with a particular element \( g \) in \( G \), called the generator, such that each element of \( G \) can be expressed as the sum \( g \oplus g \oplus \ldots \oplus g \) (repeating \( g \) some number of times). Thus, each element of \( G \) appears in the sequence of elements \(\{g, g \oplus g, g \oplus g \oplus g, \ldots\}\). We denote such an \( i \)-fold sum by \( ig \), where \( i \) is a positive integer and \( g \) is a group element; i.e.,
+
+\begin{itemize}
+    \item \( 1g = g \)
+    \item \( 2g = g \oplus g \)
+    \item \( ig = g \oplus \ldots \oplus g \) (with \( i \) terms)
+\end{itemize}
+
+Since \( g \) generates \( G \) and \( G \) includes the identity element \( 0 \), we must have \( ig = 0 \) for some positive integer \( i \). Let \( n \) be the smallest such integer; thus \( ng = 0 \) and \( ig \neq 0 \) for \( 1 \leq i \leq n - 1 \). Adding the sum of \( j \) \( g \)s for any \( j > 0 \) to each side of \( ig \neq 0 \) results in \( (i + j)g \neq jg \). Thus the elements \(\{1g, 2g, \ldots, ng = 0\}\) must all be different.
+
+\section{Fields}
+
+A field is a set \( F \) of at least two elements, with two operations \( \oplus \) (addition) and \( \ast \) (multiplication), for which the following axioms are satisfied:
+
+\begin{enumerate}
+    \item \textbf{Abelian Group under Addition}: The set \( F \) forms an abelian group under the operation \( \oplus \). This means:
+    \begin{itemize}
+        \item \textbf{Closure}: For any \( a, b \) in \( F \), the result \( a \oplus b \) is also in \( F \).
+        \item \textbf{Associativity}: For any \( a, b, c \) in \( F \), \( (a \oplus b) \oplus c = a \oplus (b \oplus c) \).
+        \item \textbf{Identity Element}: There exists an element 0 in \( F \) such that \( a \oplus 0 = 0 \oplus a = a \) for all \( a \) in \( F \).
+        \item \textbf{Inverse Elements}: For each \( a \) in \( F \), there exists an element \(-a \) in \( F \) such that \( a \oplus (-a) = 0 \).
+        \item \textbf{Commutativity}: For any \( a, b \) in \( F \), \( a \oplus b = b \oplus a \).
+    \end{itemize}
+    \item \textbf{Abelian Group under Multiplication}: The set \( F^* \) (which is \( F \) excluding the additive identity 0) forms an abelian group under the operation \( \ast \). This means:
+    \begin{itemize}
+        \item \textbf{Closure}: For any \( a, b \) in \( F^* \), the result \( a \ast b \) is also in \( F^* \).
+        \item \textbf{Associativity}: For any \( a, b, c \) in \( F^* \), \( (a \ast b) \ast c = a \ast (b \ast c) \).
+        \item \textbf{Identity Element}: There exists an element 1 in \( F^* \) such that \( a \ast 1 = 1 \ast a = a \) for all \( a \) in \( F^* \).
+        \item \textbf{Inverse Elements}: For each \( a \) in \( F^* \), there exists an element \( a^{-1} \) in \( F^* \) such that \( a \ast a^{-1} = 1 \).
+        \item \textbf{Commutativity}: For any \( a, b \) in \( F^* \), \( a \ast b = b \ast a \).
+    \end{itemize}
+    \item \textbf{Distributive Law}: For all \( a, b, c \) in \( F \), the following holds:
+    \begin{itemize}
+        \item \( (a \oplus b) \ast c = (a \ast c) \oplus (b \ast c) \)
+    \end{itemize}
+\end{enumerate}
+\end{document}
