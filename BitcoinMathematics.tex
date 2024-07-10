@@ -1,4 +1,6 @@
 \documentclass[11pt, letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+
 \usepackage{amsmath}
 \usepackage{amssymb}
 
@@ -18,57 +20,165 @@ Cryptography is fundamental to Bitcoin’s existence. This ensures that transact
 
 \subsection{Divisor}
 An integer \( n \) is a divisor of another integer \( i \) if \( i \) can be written as \( i = qn \) for some integer \( q \). This means that when you divide \( i \) by \( n \), you get another integer \( q \) with no remainder.
+\subsubsection*{Key points:}
+\begin{itemize}
+  \item A divisor \( n \) of \( i \) must divide \( i \) without leaving a remainder.
+  \item The result of dividing \( i \) by \( n \) must be an integer.
+  \item If \( n \) is a divisor of \( i \), then \( i \) can be written as \( i = qn \), where \( q \) is an integer.
+\end{itemize}
 
-\textbf{Example:} 3 is a divisor of 12 because \( 12 = 4 \times 3 \).
+
+\subsubsection*{Example:} 
+3 is a divisor of 12 because \( 12 = 4 \times 3 \).
 
 \subsection{Trivial Divisors}
 For any integer \( i \), the divisors \( 1 \) and \( i \) itself are called trivial divisors. These are the simplest divisors that any non-zero integer has.
 
-\textbf{Example:} The number 12 has 1 and 12 as its trivial divisors.
+\subsubsection*{Example:} 
+The number 12 has 1 and 12 as its trivial divisors.
 
 \subsection{Factors}
 A factor of an integer \( i \) is a positive integer that is a nontrivial divisor of \( i \). This means a factor is a positive divisor of \( i \) other than 1 or \( i \) itself.
 
-\textbf{Example:} 2 and 6 are factors of 12, but 1 and 12 are not considered factors in this context because they are trivial divisors.
+\subsubsection*{Example:} 
+2 and 6 are factors of 12, but 1 and 12 are not considered factors in this context because they are trivial divisors.
 
 \subsection{Prime Integer}
 A prime integer is a positive integer greater than 1 that has no nontrivial divisors other than itself. In other words, a prime number has exactly two distinct positive divisors: 1 and itself.
 
-\textbf{Example:} 5 is a prime number because its only positive divisors are 1 and 5.
+\subsubsection*{Example:} 
+5 is a prime number because its only positive divisors are 1 and 5.
+
+
+
+
+
+
 
 \section{Modular Arithmetic}
 
-Given a positive integer \( n \), any integer \( i \) can be uniquely expressed as \( i = qn + r \) where \( r \) (the remainder) is in the range \( 0 \leq r \leq n - 1 \), and \( q \) (the quotient) is an integer. This is based on the Euclidean division algorithm, which repeatedly subtracts \( n \) from \( i \) until the remainder is within the desired range.
+Modular arithmetic is a system of arithmetic for integers, where numbers wrap around after reaching a certain value, known as the modulus. 
 
-The remainder \( r \) is denoted as \( i \mod n \). The set of possible remainders when dividing by \( n \) is \( R_n = \{0, 1, \ldots, n - 1\} \). An integer \( i \) is divisible by \( n \) if and only if \( i \mod n = 0 \).
-
-Remainder arithmetic using the mod \( n \) remainder set \( R_n \) is called \textbf{mod-\( n \) arithmetic}. The rules for mod \( n \) arithmetic follow from the rules for integer arithmetic as follows.
-
-Let \( r = i \mod n \) and \( s = j \mod n \) then, as integers, \( r = i - qn \) and \( s = j - tn \) for some quotients \( q \) and \( t \). Then
-
+\subsection{Euclidean Division Algorithm}
+Given a positive integer \( n \), any integer \( i \) can be uniquely expressed as:
 \[
-r + s = i + j - (q + t)n
+i = qn + r
+\]
+where \( q \) is the quotient (an integer) and \( r \) is the remainder, and it lies in the range \( 0 \leq r < n \).
+\\ \\
+This representation is based on the Euclidean division algorithm, which repeatedly subtracts \( n \) from \( i \) until the remainder \( r \) is within the desired range.
+
+\subsection{Modulo Operation}
+The remainder \( r \) when \( i \) is divided by \( n \) is denoted as \( i \mod n \). The set of all possible remainders when dividing by \( n \) is:
+\[
+R_n = \{0, 1, 2, \ldots, n - 1\}
+\]
+An integer \( i \) is divisible by \( n \) if and only if \( i \mod n = 0 \).
+
+\subsection{Modular Arithmetic}
+Modular arithmetic involves performing arithmetic operations (addition, subtraction, multiplication) on the elements of the remainder set \( R_n \). The rules for modular arithmetic are derived from the rules for integer arithmetic.
+
+\subsubsection*{Example}
+Consider the modulus \( n = 5 \). The possible remainders when dividing by 5 are:
+\[
+R_5 = \{0, 1, 2, 3, 4\}
 \]
 
+Here are a few examples of how numbers wrap around in modular arithmetic:
+
+\begin{itemize}
+    \item \( 7 \mod 5 = 2 \) because when 7 is divided by 5, the remainder is 2.
+    \item \( 12 \mod 5 = 2 \) because when 12 is divided by 5, the remainder is 2.
+    \item \( 19 \mod 5 = 4 \) because when 19 is divided by 5, the remainder is 4.
+    \item \( -3 \mod 5 = 2 \) because when -3 is divided by 5, the remainder is 2 (we add 5 to -3 to get a positive remainder: -3 + 5 = 2).
+\end{itemize}
+
+For negative integers, we adjust by adding the modulus until we get a non-negative remainder.
+
+\subsection{Addition and Multiplication in Modular Arithmetic}
+Let \( r = i \mod n \) and \( s = j \mod n \). Then, as integers, \( r \) and \( s \) can be written as:
 \[
-rs = ij - (qj + ti)n + qtn
+r = i - qn
+\]
+\[
+s = j - tn
+\]
+for some integers \( q \) and \( t \). 
+\\ \\
+The modular arithmetic operations are defined as follows:
+
+\subsubsection*{Addition}
+When adding two integers modulo \( n \):
+\[
+(r + s) \mod n = (i + j) \mod n
+\]
+This is because:
+\[
+r + s = (i - qn) + (j - tn) = i + j - (q + t)n
+\]
+Hence:
+\[
+(r + s) \mod n = (i + j) \mod n
 \]
 
-Hence \( (r + s) \mod n = (i + j) \mod n \) and \( rs \mod n = ij \mod n \)
-
-i.e., the mod \( n \) remainder of the sum or product of two integers is equal to the mod \( n \) remainder of the sum or product of their mod \( n \) remainders, as integers.
-
-The mod \( n \) addition and multiplication rules are therefore defined as follows:
-
+\subsubsection*{Multiplication}
+When multiplying two integers modulo \( n \):
+\[
+(rs) \mod n = (ij) \mod n
+\]
+This is because:
+\[
+rs = (i - qn)(j - tn) = ij - qjn - itn + qtn^2
+\]
+Since \( qtn^2 \) is a multiple of \( n \), we have:
+\[
+rs \mod n = ij \mod n
+\]
+\\ \\
+The modular addition and multiplication operations can be summarized as:
 \[
 r \oplus s = (r + s) \mod n
 \]
-
 \[
 r \otimes s = (rs) \mod n
 \]
+where \( r \) and \( s \) are elements of the remainder set \( R_n \).
 
-where \( r \) and \( s \) denote elements of the remainder set \( R_n \) on the left and the corresponding ordinary integers on the right.
+\subsection{Greatest Common Divisor (GCD)}
+An important concept related to modular arithmetic is the greatest common divisor. The gcd is particularly useful in solving congruences and understanding the properties of numbers in modular arithmetic.
+\\ \\
+The greatest common divisor (gcd) of two integers \(a\) and \(b\) is the largest positive integer \(d\) such that \(d \mid a\) and \(d \mid b\). In mathematical notation, we write:
+\[
+\gcd(a, b) = d
+\]
+where \(d \mid a\) means that \(d\) divides \(a\) and \(d \mid b\) means that \(d\) divides \(b\).
+
+\subsubsection*{Example}
+
+Consider the integers \(a = 56\) and \(b = 98\). \\ 
+\(
+\text{Divisors of } 56: \{1, 2, 4, 7, 8, 14, 28, 56\} \\
+\)
+\(
+\text{Divisors of } 98: \{1, 2, 7, 14, 49, 98\}
+\)
+\\
+The common divisors are \(\{1, 2, 7, 14\}\), and the greatest common divisor is 14. 
+\\ \\
+Therefore,
+\[
+\gcd(56, 98) = 14
+\]
+
+\section*{}
+Modular arithmetic plays a crucial role in Bitcoin, particularly in the field of cryptography that secures the network.
+
+\subsubsection*{Example:}
+Bitcoin uses a specific type of public-key cryptography called Elliptic Curve Digital Signature Algorithm (ECDSA). ECC relies heavily on modular arithmetic, particularly for operations on the secp256k1 curve, which is defined by the equation:
+\[
+y^2 = x^3 + 7 \mod p
+\]
+where \( p \) is a large prime number. Points on this elliptic curve are used to generate public and private keys, with all operations (addition and multiplication) performed modulo \( p \).
 
 \section{Groups}
 
@@ -83,9 +193,16 @@ A group is a set of elements \( G = \{a, b, c, \ldots\} \) and an operation \( \
 
 In general, it is not necessary that \( a \oplus b = b \oplus a \). A group \( G \) for which \( a \oplus b = b \oplus a \) for all \( a, b \in G \) is called \textbf{abelian} or \textbf{commutative}.
 
+
+
+
+
+
 \section{Finite Cyclic Groups}
 
-A finite cyclic group is a finite group \( G \) with a particular element \( g \) in \( G \), called the generator, such that each element of \( G \) can be expressed as the sum \( g \oplus g \oplus \ldots \oplus g \) (repeating \( g \) some number of times). Thus, each element of \( G \) appears in the sequence of elements \(\{g, g \oplus g, g \oplus g \oplus g, \ldots\}\). We denote such an \( i \)-fold sum by \( ig \), where \( i \) is a positive integer and \( g \) is a group element; i.e.,
+A finite cyclic group is a finite group \( G \) with a particular element \( g \) in \( G \), called the \textbf{generator}, such that each element of \( G \) can be expressed as the sum \( g \oplus g \oplus \ldots \oplus g \) (repeating \( g \) some number of times). Thus, each element of \( G \) appears in the sequence of elements \(\{g, g \oplus g, g \oplus g \oplus g, \ldots\}\). We denote such an \( i \)-fold sum by \( ig \), where \( i \) is a positive integer and \( g \) is a group element.
+\\
+i.e.,
 
 \begin{itemize}
     \item \( 1g = g \)
@@ -94,6 +211,53 @@ A finite cyclic group is a finite group \( G \) with a particular element \( g \
 \end{itemize}
 
 Since \( g \) generates \( G \) and \( G \) includes the identity element \( 0 \), we must have \( ig = 0 \) for some positive integer \( i \). Let \( n \) be the smallest such integer; thus \( ng = 0 \) and \( ig \neq 0 \) for \( 1 \leq i \leq n - 1 \). Adding the sum of \( j \) \( g \)s for any \( j > 0 \) to each side of \( ig \neq 0 \) results in \( (i + j)g \neq jg \). Thus the elements \(\{1g, 2g, \ldots, ng = 0\}\) must all be different.
+
+\subsubsection*{Example: Cyclic Group of Order 4}
+
+Consider a cyclic group \( G \) of order 4, which means it has 4 elements. Let the generator be \( g \). The elements of \( G \) can be written as:
+\[
+G = \{0, g, 2g, 3g\}
+\]
+where \( 0 \) is the identity element and \( ng = 0 \) for \( n = 4 \). The addition table for this group is:
+\[
+\begin{array}{c|cccc}
+\oplus & 0 & g & 2g & 3g \\
+\hline
+0 & 0 & g & 2g & 3g \\
+g & g & 2g & 3g & 0 \\
+2g & 2g & 3g & 0 & g \\
+3g & 3g & 0 & g & 2g \\
+\end{array}
+\]
+Here, each element is generated by repeated addition of \( g \).
+
+\subsubsection*{Example: Cyclic Group of Integers Modulo 5}
+
+Consider the group of integers modulo 5 under addition, denoted \( \mathbb{Z}_5 \). The generator can be \( 1 \), and the group elements are:
+\[
+\mathbb{Z}_5 = \{0, 1, 2, 3, 4\}
+\]
+The addition table for this group is:
+\[
+\begin{array}{c|ccccc}
++ & 0 & 1 & 2 & 3 & 4 \\
+\hline
+0 & 0 & 1 & 2 & 3 & 4 \\
+1 & 1 & 2 & 3 & 4 & 0 \\
+2 & 2 & 3 & 4 & 0 & 1 \\
+3 & 3 & 4 & 0 & 1 & 2 \\
+4 & 4 & 0 & 1 & 2 & 3 \\
+\end{array}
+\]
+In this group, each element is generated by repeated addition of \( 1 \):
+\begin{itemize}
+    \item \( 1 \cdot 1 = 1 \)
+    \item \( 2 \cdot 1 = 1 + 1 = 2 \)
+    \item \( 3 \cdot 1 = 1 + 1 + 1 = 3 \)
+    \item \( 4 \cdot 1 = 1 + 1 + 1 + 1 = 4 \)
+    \item \( 5 \cdot 1 = 0 \) (since \( 5 \equiv 0 \pmod{5} \))
+\end{itemize}
+This shows that \( \mathbb{Z}_5 \) is a cyclic group with generator \( 1 \).
 
 \section{Fields}
 
@@ -121,4 +285,231 @@ A field is a set \( F \) of at least two elements, with two operations \( \oplus
         \item \( (a \oplus b) \ast c = (a \ast c) \oplus (b \ast c) \)
     \end{itemize}
 \end{enumerate}
+
+\subsubsection*{Example:}
+
+\begin{itemize}
+    \item A finite field of order 10 is:
+    \[
+    F_{10} = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}
+    \]
+    \item A finite field of order 13 is:
+    \[
+    F_{13} = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\}
+    \]
+    \item A finite field of order 1000 is:
+    \[
+    F_{1000} = \{0, 1, 2, \ldots, 999\}
+    \]
+\end{itemize}
+
+\section{Prime Fields}
+
+For every prime number \( p \), the set \( R_p = \{0, 1, \ldots, p - 1\} \) forms a field (denoted by \( F_p \)) under mod-\( p \) addition and multiplication.
+
+\begin{itemize}
+    \item \textbf{mod p Addition}: The addition operation in this field is defined as \( (a + b) \mod p \), where \( a \) and \( b \) are elements of \( R_p \).
+    \item \textbf{mod p Multiplication}: The multiplication operation in this field is defined as \( (a \ast b) \mod p \), where \( a \) and \( b \) are elements of \( R_p \).
+\end{itemize}
+
+\section{Elliptic-curve cryptography}
+
+\subsection{General curve equations:}
+
+\begin{itemize}
+\item \textbf{Linear Equation:}
+\begin{equation}
+y = mx + b
+\end{equation}
+This equation represents a straight line, where \(m\) is the slope, and \(b\) is the y-intercept.
+
+\item \textbf{Quadratic Equation:}
+\begin{equation}
+y = ax^2 + bx + c
+\end{equation}
+This equation represents a parabola, where \(a\), \(b\), and \(c\) are constants.
+
+
+\item \textbf{Cubic Equation:}
+\begin{equation}
+y = ax^3 + bx^2 + cx + d
+\end{equation}
+This equation represents a more complex curve, where \(a\), \(b\), \(c\), and \(d\) are constants.
+
+\end{itemize}
+
+
+\subsection{Elliptic Curves}
+An elliptic curve is defined by the equation:
+\begin{equation}
+y^2 = x^3 + ax + b
+\end{equation}
+where \(a\) and \(b\) are constants. 
+\\ \\
+For cryptography purpose, the curve must be non-singular, which means it has no cusps or self-intersections. This is ensured by the condition:
+\begin{equation}
+4a^3 + 27b^2 \neq 0
+\end{equation}
+
+\subsection{Points on the Curve}
+A point \(P\) on the elliptic curve is a pair of coordinates \((x, y)\) that satisfy the curve equation. \\ \\
+For example, if \((x, y)\) fits the equation \(y^2 = x^3 + ax + b\), then \((x, y)\) is a point on the curve.
+\\ \\
+There is also a special point at infinity, denoted \(O\), which acts as the identity element in elliptic curve operations.
+
+\subsection{Point Addition}
+
+\subsubsection{Adding Two Distinct Points}
+Given two points \(P = (x_1, y_1)\) and \(Q = (x_2, y_2)\) on the curve, where \(P \neq Q\), the sum \(R = P + Q\) is another point \((x_3, y_3)\) on the curve. The calculation is as follows:\\ \\
+
+To calculate the slope \(\lambda\) of the line through \(P\) and \(Q\):
+\begin{equation}
+\lambda = \frac{y_2 - y_1}{x_2 - x_1}
+\end{equation}
+
+To calculate the coordinates of \(R\):
+\begin{equation}
+x_3 = \lambda^2 - x_1 - x_2
+\end{equation}
+\begin{equation}
+y_3 = \lambda (x_1 - x_3) - y_1
+\end{equation}
+
+
+\subsubsection*{Example:}
+
+Suppose we have points \(P = (2, 3)\) and \(Q = (4, 1)\) on an elliptic curve defined by \(y^2 = x^3 + ax + b\).
+
+\begin{enumerate}
+\item \textbf{Calculate the slope (\(\lambda\)) of the line through \(P\) and \(Q\):}
+\begin{equation}
+\lambda = \frac{1 - 3}{4 - 2} = \frac{-2}{2} = -1
+\end{equation}
+
+\item \textbf{Calculate the x-coordinate of \(R\) (\(x_3\)):}
+\begin{equation}
+x_3 = \lambda^2 - x_1 - x_2 = (-1)^2 - 2 - 4 = 1 - 6 = -5
+\end{equation}
+
+\item \textbf{Calculate the y-coordinate of \(R\) (\(y_3\)):}
+\begin{equation}
+y_3 = \lambda (x_1 - x_3) - y_1 = -1 (2 + 5) - 3 = -1 (7) - 3 = -7 - 3 = -10
+\end{equation}
+\end{enumerate}
+
+So, the coordinates of \(R = P + Q\) are \(R = (-5, -10)\).
+
+\subsubsection{Doubling a Point}
+Given a point \(P = (x_1, y_1)\) on the curve, the point \(R = 2P\) is calculated as follows: \\ \\
+
+To calculate the slope \(\lambda\) of the tangent to the curve at \(P\):
+\begin{equation}
+\lambda = \frac{3x_1^2 + a}{2y_1}
+\end{equation}
+
+To calculate the coordinates of \(R\):
+\begin{equation}
+x_3 = \lambda^2 - 2x_1
+\end{equation}
+\begin{equation}
+y_3 = \lambda (x_1 - x_3) - y_1
+\end{equation}
+
+\subsubsection*{Example}
+Suppose we have a point \(P = (2, 3)\) on an elliptic curve defined by \(y^2 = x^3 + ax + b\), and let's assume \(a = 1\).
+
+\begin{enumerate}
+\item \textbf{Calculate the slope (\(\lambda\)) of the tangent at \(P\):}
+\begin{equation}
+\lambda = \frac{3(2)^2 + 1}{2(3)} = \frac{3(4) + 1}{6} = \frac{12 + 1}{6} = \frac{13}{6}
+\end{equation}
+
+\item \textbf{Calculate the x-coordinate of \(R\) (\(x_3\)):}
+\begin{equation}
+x_3 = \lambda^2 - 2x_1 = \left(\frac{13}{6}\right)^2 - 2(2) = \frac{169}{36} - 4 = \frac{169}{36} - \frac{144}{36} = \frac{25}{36}
+\end{equation}
+
+\item \textbf{Calculate the y-coordinate of \(R\) (\(y_3\)):}
+\begin{align*}
+y_3 &= \lambda (x_1 - x_3) - y_1 \\
+&= \frac{13}{6} \left(2 - \frac{25}{36}\right) - 3 \\
+&= \frac{13}{6} \left(\frac{72 - 25}{36}\right) - 3 \\
+&= \frac{13}{6} \left(\frac{47}{36}\right) - 3 \\
+&= \frac{611}{216} - 3 \\
+&= \frac{611}{216} - \frac{648}{216} \\
+&= \frac{-37}{216}
+\end{align*}
+    \end{enumerate}
+
+So, the coordinates of \(R = 2P\) are \(R = \left(\frac{25}{36}, \frac{-37}{216}\right)\).
+
+
+\section*{}
+ECC operates over finite fields \(\mathbb{F}_p\) where \(p\) is a prime number. This means all arithmetic operations (addition, subtraction, multiplication, and division) are performed modulo \(p\).
+
+\subsection{Example of ECC Operations}
+
+Consider the elliptic curve defined by:
+\begin{equation}
+y^2 = x^3 + 2x + 3
+\end{equation}
+over the finite field \(\mathbb{F}_5\) (i.e., modulo 5).
+
+\subsubsection*{Points on the Curve}
+Calculate the points on the curve by checking which pairs \((x, y)\) satisfy the equation:
+
+For \(x = 0\):
+\begin{equation}
+y^2 \equiv 3 \mod 5 \quad \text{(No valid } y\text{)}
+\end{equation}
+
+For \(x = 1\):
+\begin{equation}
+y^2 \equiv 1 + 2 + 3 = 6 \equiv 1 \mod 5
+\end{equation}
+\begin{equation}
+y = \pm 1 \Rightarrow (1, 1) \text{ and } (1, 4)
+\end{equation}
+
+For \(x = 2\):
+\begin{equation}
+y^2 \equiv 8 \equiv 3 \mod 5 \quad \text{(No valid } y\text{)}
+\end{equation}
+
+For \(x = 3\):
+\begin{equation}
+y^2 \equiv 27 + 6 = 33 \equiv 3 \mod 5 \quad \text{(No valid } y\text{)}
+\end{equation}
+
+For \(x = 4\):
+\begin{equation}
+y^2 \equiv 64 + 8 = 72 \equiv 2 \mod 5 \quad \text{(No valid } y\text{)}
+\end{equation}
+
+So the valid points are: \((1, 1)\) and \((1, 4)\).
+
+\subsubsection*{Key Generation}
+Base Point \(G\): Let \(G = (1, 1)\).
+\\ \\
+Private Key \(k\): Choose \(k = 2\).
+
+\subsection*{Calculate Public Key}
+\begin{equation}
+K = kG = 2G
+\end{equation}
+
+Doubling the base point \(G = (1, 1)\):
+
+\begin{equation}
+\lambda = \frac{3(1)^2 + 2}{2(1)} \equiv \frac{5}{2} \equiv \frac{0}{2} = 0 \mod 5
+\end{equation}
+\begin{equation}
+x_3 = 0^2 - 2 \cdot 1 \equiv -2 \equiv 3 \mod 5
+\end{equation}
+\begin{equation}
+y_3 = 0 \cdot (1 - 3) - 1 \equiv -1 \equiv 4 \mod 5
+\end{equation}
+
+Thus, \(2G = (3, 4)\), and the public key \(K\) is \((3, 4)\).
+
 \end{document}
